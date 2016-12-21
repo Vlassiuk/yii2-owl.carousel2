@@ -26,6 +26,11 @@ class Owlcarousel2 extends Widget
     public $clientOptions = [];
 
     /**
+     * @var string the tag to use to render the button
+     */
+    public $tagName = 'div';
+
+    /**
      * @inheritdoc
      */
     public function init()
@@ -33,7 +38,7 @@ class Owlcarousel2 extends Widget
         if (!isset($this->options['id'])) {
             $this->options['id'] = $this->getId();
         }
-        echo Html::beginTag('div', $this->options);
+        echo Html::beginTag($this->tagName, $this->options);
     }
 
     /**
@@ -41,7 +46,7 @@ class Owlcarousel2 extends Widget
      */
     public function run()
     {
-        echo Html::endTag('div');
+        echo Html::endTag($this->tagName);
         $this->registerClientScript();
     }
 
@@ -50,9 +55,8 @@ class Owlcarousel2 extends Widget
      */
     protected function registerClientScript()
     {
-//        $id = $this->options['id'];
         $view = $this->getView();
-        Owlcarousel2Asset::register($view);
+        Asset::register($view);
         $options = Json::encode($this->clientOptions);
 
         $view->registerJs("jQuery('#" . $this->options['id'] . "').owlCarousel($options)");
