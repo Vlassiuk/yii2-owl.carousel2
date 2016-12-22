@@ -18,7 +18,7 @@ class Owlcarousel2 extends Widget
      *
      * @var array 
      */
-    public $options = [];
+    public $options = ['class' => 'owl-carousel owl-theme'];
 
     /**
      * @var array
@@ -26,7 +26,7 @@ class Owlcarousel2 extends Widget
     public $clientOptions = [];
 
     /**
-     * @var string the tag to use to render the button
+     * @var string the tag to use
      */
     public $tagName = 'div';
 

@@ -12,19 +12,27 @@ use \yii\web\AssetBundle;
 class Asset extends AssetBundle
 {
 
-    public $sourcePath = '@app/components/owlcarousel2/dist';
+    public $sourcePath = '@bower/owl.carousel/dist';
 
     public $css = [
         'assets/owl.carousel.min.css',
     ];
 
     public $js = [
-//        'owl.carousel.min.js',
-        'owl.carousel.js',
+        'owl.carousel.min.js',
     ];
     
     public $depends = [
         'yii\web\JqueryAsset',
     ];
+
+    public function init()
+    {
+        if (YII_DEBUG) {
+            $this->css = ['assets/owl.carousel.css'];
+            $this->js = ['owl.carousel.js'];
+        }
+        parent::init();
+    }
 
 }
